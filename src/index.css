@@ -1,0 +1,375 @@
+:root {
+  --bg: #040714;
+  --bg-alt: #050816;
+  --accent-pink: #ff3366;
+  --accent-blue: #14b8ff;
+  --accent-yellow: #facc15;
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --card-bg: rgba(15, 23, 42, 0.92);
+  --card-border: rgba(248, 250, 252, 0.05);
+  --shadow-neon-pink: 0 0 18px rgba(255, 51, 102, 0.7);
+  --shadow-neon-blue: 0 0 20px rgba(20, 184, 255, 0.65);
+}
+
+/* reset + base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Segoe UI", sans-serif;
+  color: var(--text-main);
+  background: radial-gradient(circle at top, #111827 0, #020617 40%, #000 100%);
+}
+
+/* subtle animated gradient bg */
+body {
+  background-attachment: fixed;
+}
+
+/* app container */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 18px 32px 24px;
+  background:
+    radial-gradient(circle at 0 0, rgba(255, 51, 102, 0.16) 0, transparent 45%),
+    radial-gradient(circle at 100% 0, rgba(20, 184, 255, 0.16) 0, transparent 45%),
+    linear-gradient(180deg, #020617 0, #020617 30%, #000 100%);
+}
+
+/* header / navbar */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-radius: 18px;
+  background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(15, 23, 42, 0.7)
+    );
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow:
+    0 0 18px rgba(15, 23, 42, 0.98),
+    0 0 18px rgba(15, 23, 42, 0.98);
+  backdrop-filter: blur(20px);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-pink);
+  text-shadow: var(--shadow-neon-pink);
+}
+
+.brand .tagline {
+  margin-top: 4px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* buttons – global */
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: radial-gradient(
+      circle at 0 0,
+      rgba(255, 255, 255, 0.25),
+      transparent 50%
+    ),
+    linear-gradient(120deg, var(--accent-pink), var(--accent-blue));
+  color: #fff;
+  box-shadow: var(--shadow-neon-pink), var(--shadow-neon-blue);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.1);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  filter: brightness(0.95);
+}
+
+.btn.ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  color: var(--text-main);
+  box-shadow: none;
+}
+
+.btn.ghost:hover {
+  border-color: var(--accent-pink);
+  box-shadow: 0 0 14px rgba(255, 51, 102, 0.65);
+}
+
+/* main area: hero + list + details */
+.app-main {
+  flex: 1;
+  max-width: 1230px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+  gap: 22px;
+}
+
+/* left side – auth + list */
+.auth-pane {
+  max-width: 450px !important;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  gap: 28px;
+  transform: translateY(-60px); /* move upward */
+}
+
+
+
+/* hero section */
+.hero {
+  padding: 26px 24px;
+  border-radius: 24px;
+  background: radial-gradient(circle at 0 0, rgba(255, 51, 102, 0.25), transparent 55%),
+    radial-gradient(circle at 100% 0, rgba(20, 184, 255, 0.25), transparent 60%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.8));
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: var(--shadow-neon-pink);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.12), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.04), transparent 60%);
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.hero h2 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.hero p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* list pane wrapper */
+.list-pane,
+.details-pane {
+  background: var(--card-bg);
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  padding: 18px 18px 20px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.85);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.list-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.list-header p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* right side – details pane already styled further in App.css */
+.details-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+/* footer */
+.app-footer {
+  margin-top: 6px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* login form (login.js) */
+.login-container {
+  width: 100%;
+  padding: 26px 22px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(22px);
+  box-shadow:
+    0 0 22px rgba(255, 51, 102, 0.5),
+    0 0 18px rgba(20, 184, 255, 0.4);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+
+.login-title {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-blue);
+}
+.login-container p {
+  margin-top: 0;
+  margin-bottom: 20px; /* Creates nice gap */
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* increase spacing */
+  margin-top: 10px;
+}
+
+
+.login-form label {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.95);
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+.login-form input:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 16px rgba(20, 184, 255, 0.6);
+}
+.login-button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, var(--accent-pink), var(--accent-blue));
+  color: #fff;
+  margin-top: 10px;
+  letter-spacing: 0.08em;
+  box-shadow:
+    0 0 14px rgba(255, 51, 102, 0.6),
+    0 0 14px rgba(20, 184, 255, 0.6);
+  transition: 0.25s ease;
+}
+
+.login-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.12);
+}
+
+
+
+/* responsive */
+@media (max-width: 900px) {
+  .app {
+    padding: 14px 14px 22px;
+  }
+
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  nav {
+    align-self: stretch;
+    justify-content: flex-end;
+  }
+}
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Center layout when login screen is shown */
+.app-main.login-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Make auth-pane centered properly */
+.auth-pane {
+  max-width: 450px !important;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
